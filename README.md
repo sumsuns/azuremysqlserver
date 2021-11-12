@@ -2,6 +2,7 @@
 
 Azure Database to manage and scale. It automates the management  of infrastructure and database server, including,routine, updates,backups and security. 
 
+
 ## Module Usage
 
 ```hcl
@@ -24,15 +25,18 @@ module "mysql-db" {
 ```
 
 
-# Azure Database for MySQL Terraform Module
+# Terraform Docker client for jenkins
 
-Azure Database for MySQL is easy to set up, manage and scale. It automates the?management and maintenance of the  infrastructure and?database server,?including?routine?updates,?backups and security. 
+build the docker client with  the makefile make build , make run and test.
 
-# Docker client terraform for jenkins
-
-build the docker client with  the makefile make build , make run and test 
+usage:
+make build 
+make test
+make save
+make push
+make clean
 
 # Jenkinspipeline
- jenkinspipeline to run terraform init ,build and apply  
+ jenkinspipeline to checkout, terraform init ,build and apply  
 
 
