@@ -1,6 +1,6 @@
 # Azure Database for MySQL Terraform Module
 
-Azure Database for MySQL is easy to set up, manage and scale. It automates the?management and maintenance of the  infrastructure and?database server,?including?routine?updates,?backups and security. 
+Azure Database to manage and scale. It automates the management  of infrastructure and database server, including,routine, updates,backups and security. 
 
 ## Module Usage
 
