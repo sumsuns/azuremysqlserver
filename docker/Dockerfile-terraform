@@ -1,0 +1,42 @@
+#Docker client to build terraform 
+
+FROM alpine:latest
+
+ENV DOCKER_HOST=tcp://localhost:2375
+ENV TERRAFORM_VERSION 0.15.1
+ENV TERRAGRUNT_VERSION 0.30.1
+ENV BOTO3_VERSION=1.9.166
+
+USER root
+
+
+
+
+RUN apk update && \
+        apk upgrade
+
+RUN	apk add ca-certificates && \
+
+
+        apk --no-cache add docker \
+        curl \
+        python \
+        python-dev \
+        py-pip \
+        && pip install --upgrade --no-cache-dir boto3==${BOTO3_VERSION} \
+        && chmod +x /usr/local/bin/aws-iam-authenticator \
+        && apk add --update ca-certificates \
+        && rm /var/cache/apk/*
+		&& pip install azure-cli && \
+        apk del --purge build 
+		
+
+RUN cd /usr/local/bin && \
+    curl https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip -o terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
+    unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
+    rm terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
+    curl -sL https://github.com/gruntwork-io/terragrunt/releases/download/v${TERRAGRUNT_VERSION}/terragrunt_linux_amd64 -o terragrunt && \
+    chmod +x terragrunt && \
+    update-ca-certificates
+
+ENTRYPOINT ["/bin/bash", "-c", "while sleep 1000;do :;done"]

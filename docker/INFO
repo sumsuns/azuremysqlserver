@@ -1,0 +1,15 @@
+RUN_OPTS = --entrypoint=bash
+
+CONTAINER=${IMAGE_NAME}-${INSTANCE}
+#DOCKER_OPTS = ${RUN_OPTS} ${PORTS} ${VOLUMES} ${ENV}
+DOCKER_BUILD_OPTS = --build-arg 
+VERSION = v1.0.1
+TAG=${VERSION}-02
+REPO = repo_path
+TMP_IMAGE_NAME = $(IMAGE_NAME)
+ifdef BUILD_ID
+  INSTANCE = $(BUILD_ID)
+else
+  INSTANCE = TEST
+endif
+IMAGE_NAME = terraform

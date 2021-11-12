@@ -2,7 +2,7 @@
 
 
 
-TARGET_EMAIL = 'sumaa.ningaraju@outlook.com'
+TARGET_EMAIL = 'xxx.yyy@outlook.com'
 
 
 
@@ -77,7 +77,7 @@ stages {
           steps {
             script {
               dir("${TERRAFORM_DIR}"){
-                sh 'terraform init -backend-config=dev.backend.tfvars -reconfigure -var-file=dev.terraform.tfvars'
+                sh 'terraform init -backend-config=prod.backend.tfvars -reconfigure -var-file=prod.terraform.tfvars'
               }
             }
           }
@@ -97,7 +97,7 @@ stages {
             script {
               dir("${TERRAFORM_DIR}"){
                 echo("Do Build for ${ENV_AWS} - ${SELECTED_ENV};'")
-                sh 'terraform apply -var-file=dev.terraform.tfvars'
+                sh 'terraform apply -var-file=prod.terraform.tfvars'
               }
             }
           }
